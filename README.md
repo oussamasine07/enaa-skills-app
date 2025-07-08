@@ -26,3 +26,27 @@ spring.jpa.show-sql=true
 
 
 ## ⚙️ Validation service (`application.properties`)
+
+
+### ✅ Use Case Diagram
+![Use case diagram](./uml/useCase.webp)
+
+### ✅ Class Diagram
+![Class diagram](./uml/class.jpg)
+
+### ✅ Sequence Diagram
+![Sequence diagram](./uml/skills-sequence.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
