@@ -1,5 +1,6 @@
 ## ⚙️ Skill service (`application.properties`)
-
+#### create resources folder and under create a new file application.properties
+folder path: src/main/resources/application.properties
 ```properties
 spring.application.name=skill-service
 spring.datasource.url=jdbc:mysql://localhost:3306/YOUR_DB_NAME
