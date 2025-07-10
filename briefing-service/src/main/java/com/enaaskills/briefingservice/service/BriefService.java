@@ -32,4 +32,19 @@ public class BriefService {
         Brief brief = briefRepository.findById(id).orElse(null);
         return new ResponseEntity<>(brief, HttpStatus.OK);
     }
+
+
+    public ResponseEntity<?> updateBrief(Long id, Brief brief) {
+        Brief updatedBrief = briefRepository.findById(id).orElseThrow();
+        updatedBrief.setTitle(brief.getTitle());
+        updatedBrief.setDescription(brief.getDescription());
+        updatedBrief.setStartDate(brief.getStartDate());
+        updatedBrief.setEndDate(brief.getEndDate());
+        updatedBrief.setDuration(brief.getDuration());
+        updatedBrief.setEngagement(brief.getEngagement());
+        return new ResponseEntity<>( briefRepository.save(updatedBrief), HttpStatus.OK );
+    }
+
+
+
 }

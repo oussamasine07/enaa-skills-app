@@ -2,6 +2,7 @@ package com.enaaskills.briefingservice.controller;
 
 import com.enaaskills.briefingservice.dto.validationDTO.BriefDTO;
 import com.enaaskills.briefingservice.model.Brief;
+import com.enaaskills.briefingservice.repository.BriefRepository;
 import com.enaaskills.briefingservice.service.BriefService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class BriefController {
 
     @Autowired
     private BriefService briefService;
+    @Autowired
+    private BriefRepository briefRepository;
 
     @GetMapping
     public ResponseEntity<?> getAllBriefs () {
@@ -46,4 +49,23 @@ public class BriefController {
         return briefService.addBrief( brief );
 
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateBrief(@PathVariable Long id, @Valid @RequestBody BriefDTO briefDTO) {
+        Brief brief = new Brief();
+
+        brief.setTitle(briefDTO.title());
+        brief.setDescription(briefDTO.description());
+        brief.setStartDate(briefDTO.startDate());
+        brief.setEndDate(briefDTO.endDate());
+        brief.setDuration(briefDTO.duration());
+        brief.setEngagement(briefDTO.engagement());
+
+        brief.setLaunchDate(LocalDate.now());
+
+        return briefService.updateBrief(id, brief);
+    }
+
+
+
 }
