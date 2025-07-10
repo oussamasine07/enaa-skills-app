@@ -41,6 +41,9 @@ public class Brief {
     @Enumerated(EnumType.STRING)
     private Engagement engagement;
 
+    @OneToMany(mappedBy = "brief")
+    private List<BriefSkill> briefSkills;
+
 //    @ElementCollection
 //    private List<String> liverables;
 
