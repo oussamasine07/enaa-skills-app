@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+
 @RestController
 @RequestMapping("/briefs")
-public class BriefController {
+public class BriefController implements BriefInteface {
 
     @Autowired
     private BriefService briefService;
@@ -72,3 +73,20 @@ public class BriefController {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

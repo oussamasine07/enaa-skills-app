@@ -7,12 +7,14 @@ import com.enaaskills.skillservice.dto.validationDTO.ValidateSkillDTO;
 import com.enaaskills.skillservice.model.Skill;
 import com.enaaskills.skillservice.service.SkillService;
 import jakarta.validation.Valid;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/api/v1/skill")
-public class SkillController {
+public class SkillController implements SkillInterface {
 
     private final SkillService skillService;
 
@@ -26,6 +28,11 @@ public class SkillController {
     public ResponseEntity<?> index () {
         return skillService.listSkills();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getSkillId ( @PathVariable Long id ){
+        return skillService.getSkillId( id );
+    };
 
     @PostMapping
     public ResponseEntity<?> newSkill (@Valid @RequestBody ValidateSkillDTO validateSkillDTO) {
