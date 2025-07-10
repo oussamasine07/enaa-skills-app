@@ -45,6 +45,10 @@ public class BriefService {
         return new ResponseEntity<>( briefRepository.save(updatedBrief), HttpStatus.OK );
     }
 
+    public void deleteBrief (Long id) {
+        briefRepository.deleteById(id);
+
+    }
 
 
 }

@@ -66,6 +66,9 @@ public class BriefController {
         return briefService.updateBrief(id, brief);
     }
 
-
+    @DeleteMapping("/{id}")
+    public void deleteBrief(@PathVariable Long id) {
+        briefService.deleteBrief(id);
+    }
 
 }
