@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@FeignClient(name = "briefing-service", url = "${briefing-service.url}")
+//@FeignClient(name = "briefing-service", url = "${briefing-service.url}")
 @RequestMapping("/briefs")
 public interface BriefInteface {
 

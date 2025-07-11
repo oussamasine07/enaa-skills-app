@@ -18,5 +18,29 @@ public class BriefSkill {
     @ManyToOne
     private Brief brief;
 
-    private Long skillsId;
+    private Long skillId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Brief getBrief() {
+        return brief;
+    }
+
+    public void setBrief(Brief brief) {
+        this.brief = brief;
+    }
+
+    public Long getSkillId() {
+        return skillId;
+    }
+
+    public void setSkillId(Long skillId) {
+        this.skillId = skillId;
+    }
 }

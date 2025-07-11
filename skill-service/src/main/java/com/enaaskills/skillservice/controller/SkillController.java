@@ -29,8 +29,8 @@ public class SkillController implements SkillInterface {
         return skillService.listSkills();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getSkillId ( @PathVariable Long id ){
+    @GetMapping("/skill-id/{id}")
+    public ResponseEntity<Long> getSkillId ( @PathVariable Long id ){
         return skillService.getSkillId( id );
     };
 

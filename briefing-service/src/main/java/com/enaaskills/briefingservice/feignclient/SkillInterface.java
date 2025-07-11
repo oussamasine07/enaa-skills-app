@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(name = "skill-service", url = "${skill-service.url}", path = "/api/v1/skill")
 public interface SkillInterface {
 
-    @GetMapping("/{id}")
-    ResponseEntity<?> getSkillId (Long id);
+    @GetMapping("/skill-id/{id}")
+    ResponseEntity<?> getSkillId (@PathVariable Long id);
 
 }

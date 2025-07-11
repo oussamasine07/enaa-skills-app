@@ -48,7 +48,7 @@ public class SkillService {
         return new ResponseEntity<>(mappedSkill, HttpStatus.OK);
     }
 
-    public ResponseEntity<?> getSkillId (Long id) {
+    public ResponseEntity<Long> getSkillId (Long id) {
         Skill skill = skillRepository.findById( id )
                 .orElseThrow(() -> new NotFoundException("this skill is not found"));
 
