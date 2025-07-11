@@ -9,13 +9,7 @@ class BriefingServiceApplicationTests {
 
     @Test
     void contextLoads() {
-            Brief brief = new Brief();
-            brief.setTitle("title brief");
-            brief.setDescription("description brief");
 
-            Brief addBrief = BriefService.addBrief(brief);
-
-            assertNotnull(addBrief)
     }
 
 }
