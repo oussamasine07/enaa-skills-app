@@ -48,6 +48,13 @@ public class SkillService {
         return new ResponseEntity<>(mappedSkill, HttpStatus.OK);
     }
 
+    public ResponseEntity<Long> getSkillId (Long id) {
+        Skill skill = skillRepository.findById( id )
+                .orElseThrow(() -> new NotFoundException("this skill is not found"));
+
+        return new ResponseEntity<>(skill.getId(), HttpStatus.OK);
+    }
+
     public ResponseEntity<?> createSkill ( Skill skill ) {
         return new ResponseEntity<>(skillRepository.save( skill ), HttpStatus.OK);
     }

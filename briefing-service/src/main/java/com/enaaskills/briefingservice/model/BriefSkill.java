@@ -1,0 +1,46 @@
+package com.enaaskills.briefingservice.model;
+
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Table(name = "brief_skills")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class BriefSkill {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Brief brief;
+
+    private Long skillId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Brief getBrief() {
+        return brief;
+    }
+
+    public void setBrief(Brief brief) {
+        this.brief = brief;
+    }
+
+    public Long getSkillId() {
+        return skillId;
+    }
+
+    public void setSkillId(Long skillId) {
+        this.skillId = skillId;
+    }
+}
