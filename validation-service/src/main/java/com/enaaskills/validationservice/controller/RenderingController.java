@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/rendering")
-public class RenderingController {
+public class RenderingController implements RenderingInterface {
 
     private final RenderingService renderingService;
 
@@ -26,12 +26,9 @@ public class RenderingController {
     public ResponseEntity<?> makeNewRendering (
             @Valid @RequestBody RenderingValidationDTO renderingValidationDTO
     ) {
-        Rendering newRendering = new Rendering();
 
-        newRendering.setBriefId(renderingValidationDTO.brief_id());
-        newRendering.setMessage(renderingValidationDTO.message());
-
-        return renderingService.createRendering(newRendering, renderingValidationDTO.links());
+        System.out.println(" testing new rendering");
+        return renderingService.createRendering( renderingValidationDTO );
 
     }
 
