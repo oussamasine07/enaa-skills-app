@@ -33,6 +33,10 @@ public class BriefService {
         return new ResponseEntity<>(brief, HttpStatus.OK);
     }
 
+    public ResponseEntity<Long> getBriefId(Long id) {
+        Brief brief = briefRepository.findById(id).orElse(null);
+        return new ResponseEntity<>(brief.getId(), HttpStatus.OK);
+    }
 
     public ResponseEntity<?> updateBrief(Long id, Brief brief) {
         Brief updatedBrief = briefRepository.findById(id).orElseThrow();

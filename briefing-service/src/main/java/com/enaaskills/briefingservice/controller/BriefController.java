@@ -32,6 +32,11 @@ public class BriefController implements BriefInteface {
         return briefService.getBriefById(id);
     }
 
+    @GetMapping("/get-brief-by-id/{id}")
+    public ResponseEntity<Long> getBriefId(@PathVariable Long id) {
+        return briefService.getBriefId(id);
+    }
+
     @PostMapping
     public ResponseEntity<?> addBrief(@Valid @RequestBody BriefDTO briefDTO) {
 
