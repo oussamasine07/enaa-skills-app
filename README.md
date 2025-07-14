@@ -21,15 +21,20 @@ skill-service.url=http://localhost:8081
 #### create resources folder and under create a new file application.properties
 folder path: /briefing-service/src/main/resources/application.properties
 ```properties
-spring.application.name=skill-service
+spring.application.name=briefing-service
 spring.datasource.url=jdbc:mysql://localhost:3306/briefdb?createDatabaseIfNotExist=true
 spring.datasource.username=YOUR_USERNAME
 spring.datasource.password=YOUR_PASSWORD
 
-spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=create
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.open-in-view=false
+
+springdoc.api-docs.enabled=true
+springdoc.swagger-ui.enabled=true
+
 
 server.port=8080
 briefing-service.url=http://localhost:8080
@@ -46,7 +51,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/validation_db?createDatabaseIf
 spring.datasource.username=YOUR_USERNAME
 spring.datasource.password=YOUR_PASSWORD
 
-spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.ddl-auto=create
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
