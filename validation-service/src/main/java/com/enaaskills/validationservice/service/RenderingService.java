@@ -1,4 +1,5 @@
 package com.enaaskills.validationservice.service;
+import com.enaaskills.validationservice.dto.mapping.RenderingResponseDTO;
 import com.enaaskills.validationservice.dto.validation.RenderingValidationDTO;
 import com.enaaskills.validationservice.feignclient.BriefInterface;
 import com.enaaskills.validationservice.model.Rendering;
@@ -8,6 +9,7 @@ import com.enaaskills.validationservice.repository.RenderingRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,34 @@ public class RenderingService {
 
         return new ResponseEntity<>(renderingRepository.save( createdRendering ), HttpStatus.OK);
     }
+
+    // get rendering
+    public ResponseEntity<?> getRendering (Long renderingId) {
+
+        // get rendering
+        Rendering rendering = renderingRepository.findById( renderingId )
+                .orElseThrow( () -> new ResponseStatusException( HttpStatus.NOT_FOUND, "Rendering not found" ) );
+
+
+        // 2. Get associated links
+        List<RenderingLink> links = renderingLinkRepository.findByRendering_Id(renderingId);
+        List<String> linkList = links.stream().map(RenderingLink::getLink).toList();
+
+        // get brief
+        ResponseEntity<?> res = briefInterface.getBriefById( rendering.getBriefId() );
+        Object briefData = res.getBody();
+
+        RenderingResponseDTO renderingResponseDTO = new RenderingResponseDTO(
+                rendering.getId(),
+                rendering.getMessage(),
+                linkList,
+                briefData
+        );
+
+        return new ResponseEntity<>(renderingResponseDTO, HttpStatus.OK);
+
+    }
+
 
 }
 

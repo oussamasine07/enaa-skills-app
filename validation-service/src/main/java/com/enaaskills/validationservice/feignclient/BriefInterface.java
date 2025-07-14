@@ -12,4 +12,7 @@ public interface BriefInterface {
     @GetMapping("/get-brief-by-id/{id}")
     public ResponseEntity<?> getBriefId(@PathVariable Long id);
 
+    @GetMapping("/{id}")
+    ResponseEntity<?> getBriefById(@PathVariable Long id);
+
 }

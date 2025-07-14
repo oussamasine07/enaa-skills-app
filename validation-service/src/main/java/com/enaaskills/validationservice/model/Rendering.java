@@ -25,6 +25,9 @@ public class Rendering {
     @OneToMany(mappedBy = "rendering")
     private List<RenderingLink> renderingLinks;
 
+    @OneToOne
+    private Validation validation;
+
     public Long getId() {
         return id;
     }
