@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-validation-service
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: enaa_app_skills_db
+    networks:
+      - enaa-network
+
+  validation-service:
+    image: validation-service
+    container_name: validation-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+    networks:
+      - enaa-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-validation-service:3306/validation_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+networks:
+  enaa-network:
+    driver: bridge
