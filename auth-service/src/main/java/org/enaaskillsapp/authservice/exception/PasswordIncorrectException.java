@@ -1,4 +1,4 @@
-package org.enaaskillsapp.authservice;
+package org.enaaskillsapp.authservice.exception;
 
 public class PasswordIncorrectException extends RuntimeException {
 

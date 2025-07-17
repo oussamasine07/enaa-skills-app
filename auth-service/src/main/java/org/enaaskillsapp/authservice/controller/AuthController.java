@@ -23,7 +23,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/admin/login")
     public ResponseEntity<?> login (@RequestBody LoginValidationDTO loginValidationDTO) {
 
         User user = new Admin();

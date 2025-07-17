@@ -1,7 +1,7 @@
 package org.enaaskillsapp.authservice.service;
 
 
-import org.enaaskillsapp.authservice.PasswordIncorrectException;
+import org.enaaskillsapp.authservice.exception.PasswordIncorrectException;
 import org.enaaskillsapp.authservice.dto.mapping.AuthUserDTO;
 import org.enaaskillsapp.authservice.mapping.AdminMapper;
 import org.enaaskillsapp.authservice.mapping.CoachMapper;
@@ -55,7 +55,7 @@ public class AuthService {
             Authentication authentication = authenticationManager
                     .authenticate(
                             new UsernamePasswordAuthenticationToken(
-                                    user.getEmail(),
+                                     user.getEmail(),
                                     user.getPassword()
                             )
                     );

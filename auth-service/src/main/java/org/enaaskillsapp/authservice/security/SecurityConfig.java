@@ -44,7 +44,7 @@ public class SecurityConfig {
                         )
                         .permitAll()
                         .requestMatchers(
-                                "/app/login"
+                                "/app/admin/login"
                         )
                         .permitAll()
                         .anyRequest()
