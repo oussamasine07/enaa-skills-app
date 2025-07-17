@@ -1,6 +1,7 @@
 package com.enaaskills.briefingservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +42,7 @@ public class Brief {
     @Enumerated(EnumType.STRING)
     private Engagement engagement;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "brief")
     private List<BriefSkill> briefSkills;
 
