@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/skill-service/pom.xml" />
         <option value="$PROJECT_DIR$/briefing-service/pom.xml" />
         <option value="$PROJECT_DIR$/validation-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../gestion-competences-microservices/apprenant-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Eureka-Server/pom.xml" />
       </list>
     </option>
   </component>

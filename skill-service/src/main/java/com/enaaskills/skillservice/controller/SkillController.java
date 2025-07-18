@@ -7,7 +7,6 @@ import com.enaaskills.skillservice.dto.validationDTO.ValidateSkillDTO;
 import com.enaaskills.skillservice.model.Skill;
 import com.enaaskills.skillservice.service.SkillService;
 import jakarta.validation.Valid;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

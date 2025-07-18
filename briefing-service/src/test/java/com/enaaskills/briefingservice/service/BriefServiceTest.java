@@ -3,7 +3,6 @@ package com.enaaskills.briefingservice.service;
 
 import com.enaaskills.briefingservice.model.Brief;
 import com.enaaskills.briefingservice.model.Engagement;
-import com.enaaskills.briefingservice.service.BriefService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

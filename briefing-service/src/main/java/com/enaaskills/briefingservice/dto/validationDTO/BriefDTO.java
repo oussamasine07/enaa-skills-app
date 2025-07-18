@@ -3,10 +3,8 @@ package com.enaaskills.briefingservice.dto.validationDTO;
 import com.enaaskills.briefingservice.model.Engagement;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
 public record BriefDTO (

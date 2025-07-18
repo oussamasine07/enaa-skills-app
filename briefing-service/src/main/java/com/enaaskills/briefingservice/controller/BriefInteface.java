@@ -2,7 +2,6 @@ package com.enaaskills.briefingservice.controller;
 
 import com.enaaskills.briefingservice.dto.validationDTO.BriefDTO;
 import jakarta.validation.Valid;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

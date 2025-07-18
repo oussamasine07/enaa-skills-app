@@ -19,7 +19,6 @@ public class BriefService {
 
     public ResponseEntity<?> addBrief(Brief brief) {
         Brief savedBrief = briefRepository.save(brief);
-
         return new ResponseEntity<>(savedBrief, HttpStatus.CREATED);
     }
 

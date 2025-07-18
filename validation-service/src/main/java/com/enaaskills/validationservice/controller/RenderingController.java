@@ -1,7 +1,6 @@
 package com.enaaskills.validationservice.controller;
 
 import com.enaaskills.validationservice.dto.validation.RenderingValidationDTO;
-import com.enaaskills.validationservice.model.Rendering;
 import com.enaaskills.validationservice.service.RenderingService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

@@ -1,14 +1,13 @@
-package com.enaaskills.briefingservice;
+package com.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BriefingServiceApplicationTests {
+class EurekaServerApplicationTests {
 
     @Test
     void contextLoads() {
-
     }
 
 }
