@@ -1,0 +1,35 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: SKILL-SERVICE
+          uri: lb://SKILL-SERVICE
+          predicates:
+            - Path=/skill/**
+          filters:
+            - StripPrefix=1
+
+        - id: VALIDATION-SERVICE
+          uri: lb://VALIDATION-SERVICE
+          predicates:
+            - Path=/validation/**
+          filters:
+            - StripPrefix=1
+
+        - id: BRIEFING-SERVICE
+          uri: lb://BRIEFING-SERVICE
+          predicates:
+            - Path=/briefing/**
+          filters:
+            - StripPrefix=1
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
