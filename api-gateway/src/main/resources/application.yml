@@ -3,35 +3,38 @@ server:
 
 spring:
   application:
-    name: api-gateway-service
-
+    name: api-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
-        - id: validation-route
+        - id: SKILL-SERVICE
+          uri: lb://SKILL-SERVICE
+          predicates:
+            - Path=/skill/**
+          filters:
+            - StripPrefix=1
+
+        - id: VALIDATION-SERVICE
           uri: lb://VALIDATION-SERVICE
           predicates:
             - Path=/validation/**
           filters:
             - StripPrefix=1
 
-        - id: briefing-route
+        - id: BRIEFING-SERVICE
           uri: lb://BRIEFING-SERVICE
           predicates:
             - Path=/briefing/**
           filters:
             - StripPrefix=1
 
-        - id: skill-route
-          uri: lb://SKILL-SERVICE
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/skill/**
+            - Path=/auth/**
           filters:
             - StripPrefix=1
+
 
 eureka:
   client:

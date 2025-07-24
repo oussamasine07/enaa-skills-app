@@ -7,4 +7,5 @@ import jakarta.persistence.Table;
 @Table(name = "coaches")
 public class Coach extends User {
 
+    private String specialty;
 }
