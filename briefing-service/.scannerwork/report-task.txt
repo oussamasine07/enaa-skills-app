@@ -1,0 +1,6 @@
+projectKey=briefing-service
+serverUrl=http://localhost:9000
+serverVersion=25.7.0.110598
+dashboardUrl=http://localhost:9000/dashboard?id=briefing-service
+ceTaskId=2c1e3669-f0e4-48ba-a856-956cf3ce420d
+ceTaskUrl=http://localhost:9000/api/ce/task?id=2c1e3669-f0e4-48ba-a856-956cf3ce420d
