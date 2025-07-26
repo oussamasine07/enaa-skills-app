@@ -1,0 +1,130 @@
+version: "3.9"
+
+services:
+#  MySQL configs
+  mysql-enaa-auth-app:
+    image: mysql
+    container_name: mysql-enaa-auth-app-container
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: enaa_app_auth_db
+    volumes:
+      - mysql_auth_data:/var/lib/mysql
+
+  mysql-enaa-briefing-app:
+    image: mysql
+    container_name: mysql-enaa-briefing-app-container
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: enaa_app_briefing_db
+    volumes:
+      - mysql_bridfing_data:/var/lib/mysql
+
+  mysql-enaa-skill-app:
+    image: mysql
+    container_name: mysql-enaa-skill-app-container
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: enaa_app_skill_db
+    volumes:
+      - mysql_skill_data:/var/lib/mysql
+
+  mysql-enaa-validation-app:
+    image: mysql
+    container_name: mysql-enaa-validation-app-container
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: enaa_app_validation_db
+    volumes:
+      - mysql_validation_data:/var/lib/mysql
+
+
+
+#  Micorservices configs
+  auth-service:
+    image: enaa-auth-service
+    container_name: enaa-auth-service-container
+    ports:
+      - "8085:8085"
+    depends_on:
+      - mysql-enaa-auth-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-enaa-auth-app:3306/enaa_app_auth_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCEA_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  briefing-service:
+    image: enaa-briefing-service
+    container_name: enaa-briefing-service-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql-enaa-briefing-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-enaa-briefing-app:3306/enaa_app_briefing_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  skill-service:
+    image: enaa-skill-service
+    container_name: enaa-skill-service-container
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql-enaa-skill-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-enaa-skill-app:3306/enaa_app_skills_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  validation-service:
+    image: enaa-validation-service
+    container_name: enaa-validation-service-container
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mysql-enaa-validation-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-enaa-validation-app:3306/enaa_app_skills_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+  eureka:
+    image: enaa-eureka
+    container_name: enaa-eureka-container
+    ports:
+      - "8761:8761"
+
+  api-gateway:
+    image: enaa-api-gateway-img
+    container_name: api-gateway-container
+    ports:
+      - "8088:8088"
+
+networks:
+  enaa-net:
+    driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+
