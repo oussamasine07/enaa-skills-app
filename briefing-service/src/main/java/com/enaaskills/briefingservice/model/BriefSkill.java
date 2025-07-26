@@ -3,13 +3,9 @@ package com.enaaskills.briefingservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity
 @Table(name = "brief_skills")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class BriefSkill {
 
     @Id
@@ -45,4 +41,6 @@ public class BriefSkill {
     public void setSkillId(Long skillId) {
         this.skillId = skillId;
     }
+
+
 }
