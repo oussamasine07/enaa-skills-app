@@ -47,6 +47,10 @@ public class SecurityConfig {
                                 "/app/admin/login"
                         )
                         .permitAll()
+                        .requestMatchers(
+                                "/app/register"
+                        )
+                        .permitAll()
                         .anyRequest()
                         .authenticated()  // Other requests need auth
                 )
