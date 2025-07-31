@@ -1,6 +1,7 @@
 package org.enaaskillsapp.authservice.service;
 
 
+import org.enaaskillsapp.authservice.dto.validation.RegisterUserValidationDTO;
 import org.enaaskillsapp.authservice.exception.PasswordIncorrectException;
 import org.enaaskillsapp.authservice.dto.mapping.AuthUserDTO;
 import org.enaaskillsapp.authservice.mapping.AdminMapper;
@@ -92,6 +93,23 @@ public class AuthService {
                 break;
         }
         return authUserDTO;
+    }
+
+    public ResponseEntity<?> registerUser (RegisterUserValidationDTO registerUserValidationDTO) {
+        User user = null;
+
+        switch (registerUserValidationDTO.role()){
+            case "learner":
+                user = new Learner();
+                break;
+            case "coach":
+                user = new Coach();
+                break;
+        }
+
+
+
+        return null;
     }
 
 }
