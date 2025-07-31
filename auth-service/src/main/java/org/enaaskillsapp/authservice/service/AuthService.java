@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -50,6 +51,8 @@ public class AuthService {
         this.coachMapper = coachMapper;
         this.learnerMapper = learnerMapper;
     }
+
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public ResponseEntity<?> loginUser (User user) {
         try {
@@ -107,9 +110,14 @@ public class AuthService {
                 break;
         }
 
+        user.setFirstName( registerUserValidationDTO.firstName() );
+        user.setLastName( registerUserValidationDTO.lastName() );
+        user.setEmail( registerUserValidationDTO.email() );
+        user.setPassword( encoder.encode( registerUserValidationDTO.password() ) );
 
+        User savedUser = userRepository.save( user );
 
-        return null;
+        return new ResponseEntity<>( savedUser, HttpStatus.OK );
     }
 
 }

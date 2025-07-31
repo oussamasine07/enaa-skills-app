@@ -1,7 +1,9 @@
 package org.enaaskillsapp.authservice.controller;
 
 
+import jakarta.validation.Valid;
 import org.enaaskillsapp.authservice.dto.validation.LoginValidationDTO;
+import org.enaaskillsapp.authservice.dto.validation.RegisterUserValidationDTO;
 import org.enaaskillsapp.authservice.model.Admin;
 import org.enaaskillsapp.authservice.model.User;
 import org.enaaskillsapp.authservice.service.AuthService;
@@ -32,6 +34,11 @@ public class AuthController {
         user.setPassword( loginValidationDTO.password() );
 
         return authService.loginUser(user);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register ( @Valid @RequestBody RegisterUserValidationDTO registerUserValidationDTO) {
+        return authService.registerUser( registerUserValidationDTO );
     }
 
 }
